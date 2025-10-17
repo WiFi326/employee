@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+@import "daisyui";
+
+* {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* تخصيصات إضافية للتصميم الجديد */
+:root {
+  --radius-selector: 2rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* تخصيصات الجداول مع DaisyUI */
+.table {
+  background-color: oklch(20% 0.08 209);
+}
+
+.table th {
+  background-color: oklch(15% 0.08 209);
+  color: oklch(90% 0.076 70.697);
+  border-color: oklch(30% 0.08 209);
+}
+
+.table td {
+  border-color: oklch(30% 0.08 209);
+  color: oklch(90% 0.076 70.697);
+}
+
+.table tr:hover {
+  background-color: oklch(25% 0.08 209);
+}
+
+/* تخصيصات للألوان حسب النوع في الإحصائيات */
+.statistics-vacation {
+  background-color: oklch(20% 0.08 209);
+}
+
+.statistics-reward {
+  background-color: oklch(25% 0.08 209);
+}
+
+.statistics-violation {
+  background-color: oklch(22% 0.08 209);
+}
+
+/* تخصيصات للأزرار */
+.btn {
+  border-radius: var(--radius-field);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: oklch(92% 0.2653 125);
+  color: oklch(50% 0.2653 125);
+  border: var(--border) solid oklch(92% 0.2653 125);
+}
+
+.btn-primary:hover {
+  background-color: oklch(85% 0.2653 125);
+  border-color: oklch(85% 0.2653 125);
+}
+
+.btn-success {
+  background-color: oklch(79% 0.209 151.711);
+  color: oklch(26% 0.065 152.934);
+}
+
+.btn-error {
+  background-color: oklch(65% 0.1985 24.22);
+  color: oklch(27% 0.1985 24.22);
+}
+
+/* تخصيصات للكروت */
+.card {
+  background-color: oklch(20% 0.08 209);
+  border-radius: var(--radius-box);
+  border: 1px solid oklch(30% 0.08 209);
+}
+
+
+/* تخصيصات للإدخال */
+.input {
+  background-color: oklch(15% 0.08 209);
+  border-color: oklch(30% 0.08 209);
+  color: oklch(27.847% 0.05693 66.388);
+}
+
+.input:focus {
+  border-color: oklch(92% 0.2653 125);
+  box-shadow: 0 0 0 2px oklch(92% 0.2653 125 / 0.2);
+}
+
+/* تخصيصات للشريط الجانبي */
+.menu {
+  background-color: oklch(15% 0.08 209);
+}
+
+.menu li > * {
+  color: oklch(90% 0.076 70.697);
+}
+
+.menu li > *.active {
+  background-color: oklch(92% 0.2653 125);
+  color: oklch(50% 0.2653 125);
+}
+
+.menu li > *:not(.active):hover {
+  background-color: oklch(25% 0.08 209);
+}
+
+/* تخصيصات للروتيت */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* تخصيصات للبحث */
+.search-input {
+  background-position: right 12px center;
+}
+
+/* إصلاح مشاكل العرض على الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .table {
+    font-size: 14px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px 12px;
+  }
+}

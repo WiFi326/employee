@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="abyss">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الموظفين</title>
+    <link href="./styles/tailwind.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-base-100 text-base-content">
+    <div id="app" class="flex h-screen">
+        <!-- الشريط الجانبي -->
+        <div id="sidebar" class="bg-base-200 w-64 transition-all duration-300"></div>
+        
+        <!-- المحتوى الرئيسي -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- الرأس -->
+            <header class="bg-base-200 shadow-sm z-10">
+                <div class="flex items-center justify-between p-4">
+                    <button id="toggleSidebar" class="btn btn-ghost btn-square">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <h1 class="text-xl font-bold">نظام إدارة الموظفين</h1>
+                    <div class="w-6"></div>
+                </div>
+            </header>
+            
+            <!-- المحتوى الديناميكي -->
+            <main id="main-content" class="flex-1 overflow-auto p-6">
+                <!-- سيتم تحميل المحتوى هنا ديناميكياً -->
+            </main>
+        </div>
+    </div>
+
+    <!-- منطقة الإشعارات -->
+    <div id="notifications" class="fixed top-4 right-4 z-50"></div>
+
+    <!-- المودال العام -->
+    <div id="modal" class="modal">
+        <div class="modal-box">
+            <h3 id="modal-title" class="font-bold text-lg"></h3>
+            <div id="modal-body" class="py-4"></div>
+            <div class="modal-action">
+                <button id="modal-cancel" class="btn btn-ghost">إلغاء</button>
+                <button id="modal-confirm" class="btn btn-primary">تأكيد</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الملفات الأساسية -->
+    <script src="./js/firebase-config.js"></script>
+    <script src="./js/notifications.js"></script>
+    <script src="./js/modal.js"></script>
+    
+    <!-- الملفات الخاصة بالأقسام -->
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/dashboard.js"></script>
+    <script src="./js/employees.js"></script>
+    <script src="./js/vacations.js"></script>
+    <script src="./js/rewards.js"></script>
+    <script src="./js/violations.js"></script>
+    <script src="./js/statistics.js"></script>
+    <script src="./js/timings.js"></script>
+    
+    <!-- الملف الرئيسي -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
