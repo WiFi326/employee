@@ -3,11 +3,27 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'tajawal': ['Tajawal', 'sans-serif'],
+        'cairo': ['Cairo', 'sans-serif'],
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    function({ addBase }) {
+      addBase({
+        ':root': {
+          '--radius-selector': '2rem',
+          '--radius-field': '0.25rem',
+          '--radius-box': '0.5rem',
+          '--size-selector': '0.25rem',
+          '--size-field': '0.25rem',
+          '--border': '1px',
+          '--depth': '1',
+          '--noise': '0',
+        },
+      })
+    }
+  ],
   daisyui: {
     themes: [
       {
