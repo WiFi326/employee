@@ -11,72 +11,72 @@ class Dashboard {
     render() {
         this.container.innerHTML = `
             <div class="mb-6">
-                <h2 class="text-2xl font-bold">الصفحة الرئيسية</h2>
-                <p class="text-base-content/70">مرحباً بك في نظام إدارة الموظفين</p>
+                <h2 class="text-2xl text-title">الصفحة الرئيسية</h2>
+                <p class="text-white">مرحباً بك في نظام إدارة الموظفين</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="card bg-base-200">
+                <div class="card car-col">
                     <div class="card-body">
                         <div class="flex items-center">
                             <div class="p-3 rounded-full bg-blue-500/20 text-blue-400">
                                 <span class="text-xl">🏖️</span>
                             </div>
                             <div class="mr-4">
-                                <h3 class="text-sm font-medium text-base-content/70">الإجازات هذا الشهر</h3>
-                                <p id="vacations-count" class="text-2xl font-semibold">0</p>
+                                <h3 class="text-base font-medium text-card-colr">الإجازات هذا الشهر</h3>
+                                <p id="vacations-count" class="text-2xl text-white">0</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card bg-base-200">
+                <div class="card car-col">
                     <div class="card-body">
                         <div class="flex items-center">
                             <div class="p-3 rounded-full bg-green-500/20 text-green-400">
                                 <span class="text-xl">🏆</span>
                             </div>
                             <div class="mr-4">
-                                <h3 class="text-sm font-medium text-base-content/70">المكافآت هذا الشهر</h3>
-                                <p id="rewards-count" class="text-2xl font-semibold">0</p>
+                                <h3 class="text-base font-medium text-card-colr">المكافآت هذا الشهر</h3>
+                                <p id="rewards-count" class="text-2xl text-white">0</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card bg-base-200">
+                <div class="card car-col">
                     <div class="card-body">
                         <div class="flex items-center">
                             <div class="p-3 rounded-full bg-red-500/20 text-red-400">
                                 <span class="text-xl">⚠️</span>
                             </div>
                             <div class="mr-4">
-                                <h3 class="text-sm font-medium text-base-content/70">المخالفات هذا الشهر</h3>
-                                <p id="violations-count" class="text-2xl font-semibold">0</p>
+                                <h3 class="text-base font-medium text-card-colr">المخالفات هذا الشهر</h3>
+                                <p id="violations-count" class="text-2xl text-white">0</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card bg-base-200">
+                <div class="card car-col">
                     <div class="card-body">
                         <div class="flex items-center">
                             <div class="p-3 rounded-full bg-purple-500/20 text-purple-400">
                                 <span class="text-xl">⏱️</span>
                             </div>
                             <div class="mr-4">
-                                <h3 class="text-sm font-medium text-base-content/70">الزمنيات هذا الشهر</h3>
-                                <p id="timings-count" class="text-2xl font-semibold">0</p>
+                                <h3 class="text-base font-medium text-card-colr">الزمنيات هذا الشهر</h3>
+                                <p id="timings-count" class="text-2xl text-white">0</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card bg-base-200">
+            <div class="card car-col">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold mb-4">نظرة عامة</h3>
-                    <p class="text-base-content/70">
+                    <h3 class="text-lg font-semibold mb-4 text-card-colr">نظرة عامة</h3>
+                    <p class="text-white">
                         نظام إدارة الموظفين يتيح لك إدارة جميع جوانب عمل الموظفين بسهولة وكفاءة.
                         يمكنك متابعة الإجازات والمكافآت والمخالفات والزمنيات من خلال الأقسام المختلفة.
                     </p>

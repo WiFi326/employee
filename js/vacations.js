@@ -56,7 +56,7 @@ class Vacations {
                 <p class="text-base-content/70">إضافة وإدارة إجازات الموظفين</p>
             </div>
 
-            <div class="card bg-base-200 mb-6">
+            <div class="card car-col mb-6">
                 <div class="card-body">
                     <h3 class="text-lg font-semibold mb-4">إضافة إجازة جديدة</h3>
                     <form id="add-vacation-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -102,7 +102,7 @@ class Vacations {
                 </div>
             </div>
 
-            <div class="card bg-base-200">
+            <div class="card car-col">
                 <div class="card-body">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                         <h3 class="text-lg font-semibold">قائمة الإجازات</h3>

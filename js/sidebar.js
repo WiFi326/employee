@@ -15,7 +15,7 @@ class Sidebar {
     render() {
         this.sidebar.innerHTML = `
             <div class="p-4">
-                <h2 class="text-xl font-bold mb-6">إدارة الموظفين</h2>
+                <h2 class="text-xl text-title mb-6">إدارة الموظفين</h2>
                 <ul class="menu menu-lg w-full">
                     <li>
                         <a href="#" data-section="dashboard" class="sidebar-link">

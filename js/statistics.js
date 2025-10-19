@@ -98,7 +98,7 @@ class Statistics {
                 <p class="text-base-content/70">عرض جميع الإحصائيات والبيانات المجمعة</p>
             </div>
 
-            <div class="card bg-base-200 mb-6">
+            <div class="card car-col mb-6">
                 <div class="card-body">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <div class="flex-1">
@@ -124,7 +124,7 @@ class Statistics {
                 </div>
             </div>
 
-            <div class="card bg-base-200">
+            <div class="card car-col">
                 <div class="card-body">
                     <h3 class="text-lg font-semibold mb-4">البيانات المجمعة</h3>
                     <div class="overflow-x-auto">

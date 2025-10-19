@@ -29,7 +29,7 @@ class Employees {
                 <p class="text-base-content/70">إضافة وإدارة بيانات الموظفين</p>
             </div>
 
-            <div class="card bg-base-200 mb-6">
+            <div class="card car-col mb-6">
                 <div class="card-body">
                     <h3 class="text-lg font-semibold mb-4">إضافة موظف جديد</h3>
                     <form id="add-employee-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -59,7 +59,7 @@ class Employees {
                 </div>
             </div>
 
-            <div class="card bg-base-200 mb-6">
+            <div class="card car-col mb-6">
                 <div class="card-body">
                     <h3 class="text-lg font-semibold mb-4">قائمة الموظفين</h3>
                     <div class="overflow-x-auto">
@@ -80,7 +80,7 @@ class Employees {
                 </div>
             </div>
 
-            <div class="card bg-base-200">
+            <div class="card car-col">
                 <div class="card-body">
                     <h3 class="text-lg font-semibold text-error">خيارات متقدمة</h3>
                     <button id="delete-statistics" class="btn btn-error">

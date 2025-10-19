@@ -19,35 +19,35 @@
 
 /* تخصيصات الجداول مع DaisyUI */
 .table {
-  background-color: oklch(20% 0.08 209);
+  background-color: oklch(25% 0.08 209);
 }
 
 .table th {
-  background-color: oklch(15% 0.08 209);
+  background-color: oklch(20% 0.08 209);
   color: oklch(90% 0.076 70.697);
-  border-color: oklch(30% 0.08 209);
+  border-color: oklch(35% 0.08 209);
 }
 
 .table td {
-  border-color: oklch(30% 0.08 209);
+  border-color: oklch(35% 0.08 209);
   color: oklch(90% 0.076 70.697);
 }
 
 .table tr:hover {
-  background-color: oklch(25% 0.08 209);
+  background-color: oklch(30% 0.08 209);
 }
 
 /* تخصيصات للألوان حسب النوع في الإحصائيات */
 .statistics-vacation {
-  background-color: oklch(20% 0.08 209);
-}
-
-.statistics-reward {
   background-color: oklch(25% 0.08 209);
 }
 
+.statistics-reward {
+  background-color: 5;
+}
+
 .statistics-violation {
-  background-color: oklch(22% 0.08 209);
+  background-color: oklch(27% 0.08 209);
 }
 
 /* تخصيصات للأزرار */
@@ -81,16 +81,16 @@
 
 /* تخصيصات للكروت */
 .card {
-  background-color: oklch(20% 0.08 209);
+  background-color: oklch(25% 0.08 209);
   border-radius: var(--radius-box);
-  border: 1px solid oklch(30% 0.08 209);
+  border: 1px solid oklch(35% 0.08 209);
 }
 
 
 /* تخصيصات للإدخال */
 .input {
-  background-color: oklch(15% 0.08 209);
-  border-color: oklch(30% 0.08 209);
+  background-color: oklch(20% 0.08 209);
+  border-color: oklch(35% 0.08 209);
   color: oklch(27.847% 0.05693 66.388);
 }
 
@@ -101,7 +101,7 @@
 
 /* تخصيصات للشريط الجانبي */
 .menu {
-  background-color: oklch(15% 0.08 209);
+  background-color: oklch(20% 0.08 209);
 }
 
 .menu li > * {
@@ -114,7 +114,7 @@
 }
 
 .menu li > *:not(.active):hover {
-  background-color: oklch(25% 0.08 209);
+  background-color: oklch(30% 0.08 209);
 }
 
 /* تخصيصات للروتيت */
@@ -137,4 +137,23 @@
   .table td {
     padding: 8px 12px;
   }
+}
+
+.bg-oklch {
+  background-color: oklch(15% 0.08 209);
+}
+
+.text-title {
+
+  color: oklch(90% 0.076 70.697);
+}
+
+.car-col {
+
+  color: oklch(30% 0.08 209);
+}
+
+.text-card-colr {
+
+  color: oklch(90% 0.076 70.697);
 }
