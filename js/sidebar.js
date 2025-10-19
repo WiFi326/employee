@@ -15,7 +15,7 @@ class Sidebar {
     render() {
         this.sidebar.innerHTML = `
              <div class="p-4 overflow-hidden">
-    <h2 class="text-xl text-title mb-6">إدارة الموظفين</h2>
+    <h2 class="text-xl text-title mb-6 text-center">إدارة الموظفين</h2>
 
     <ul class="menu menu-lg w-full min-h-[540px] flex flex-col justify-between rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.6)]">
        
