@@ -138,20 +138,53 @@ class Sidebar {
     }
 }
 
-    navigateTo(section) {
-        // إزالة النشاط من جميع الروابط
-        const links = this.sidebar.querySelectorAll('.sidebar-link');
-        links.forEach(link => {
-            link.classList.remove('bg-blue-700');
-        });
+   navigateTo(section) {
+    // إزالة الحالة النشطة من جميع الروابط (خلفية + نص + أيقونة)
+    const links = this.sidebar.querySelectorAll('.sidebar-link');
+    links.forEach(link => {
+        link.classList.remove('bg-blue-700');        // إزالة الخلفية النشطة
+        link.classList.remove('text-white');         // إزالة كلاس النص الأبيض لو موجود
+        // إذا هناك كلاس يضبط النص إلى أسود (مثلاً text-black أو text-title) نزيله أيضاً
+        link.classList.remove('text-black', 'text-title');
 
-        // إضافة النشاط للرابط الحالي
-        const currentLink = this.sidebar.querySelector(`[data-section="${section}"]`);
-        currentLink.classList.add('bg-blue-700');
+        // تأكد أن الـ <span> اللي يحتوي النص رجع للوضع الطبيعي
+        const span = link.querySelector('span');
+        if (span) {
+            span.classList.remove('text-white');
+            span.classList.remove('text-black', 'text-title');
+        }
 
-        // تحميل القسم المطلوب
-        window.loadSection(section);
+        // الأيقونة: نعيد stroke أو لونها الأساسي (نستخدم الأبيض كافتراضي هنا إذا تريد غيره غيّره)
+        const svg = link.querySelector('svg');
+        if (svg) {
+            // أزل أية قيمة stroke ثابتة قد حُدِدت سابقًا
+            svg.setAttribute('stroke', 'currentColor'); // يجعلها ترث لون النص
+        }
+    });
+
+    // اجلب الرابط المختار وضَع له الحالة النشطة
+    const currentLink = this.sidebar.querySelector(`[data-section="${section}"]`);
+    if (!currentLink) return;
+
+    currentLink.classList.add('bg-blue-700');   // الخلفية النشطة
+
+    // اضبط النص والأيقونة ليصيرا أبيض عند التفعيل
+    currentLink.classList.add('text-white');
+    const currentSpan = currentLink.querySelector('span');
+    if (currentSpan) {
+        currentSpan.classList.add('text-white');
     }
+    const currentSvg = currentLink.querySelector('svg');
+    if (currentSvg) {
+        currentSvg.setAttribute('stroke', 'white'); // تأكد أن الأيقونة تظهر باللون الأبيض
+        // لو تستخدم خصائص fill بدلاً من stroke لبعض الأيقونات:
+        currentSvg.setAttribute('fill', 'none'); // أو 'white' إذا تريد مملوءة
+    }
+
+    // تحميل القسم المطلوب
+    window.loadSection(section);
+}
+
 }
 
 // تهيئة الشريط الجانبي عند تحميل الصفحة
