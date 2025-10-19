@@ -36,7 +36,7 @@ class Notifications {
         // إخفاء تلقائي بعد 5 ثواني
         setTimeout(() => {
             this.hide(notification);
-        }, 5000);
+        }, 3000);
     }
 
     hide(notification) {
