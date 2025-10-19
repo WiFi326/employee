@@ -25,13 +25,13 @@ class Employees {
     render() {
         this.container.innerHTML = `
             <div class="mb-6">
-                <h2 class="text-2xl font-bold">الإعدادات - إدارة الموظفين</h2>
-                <p class="text-base-content/70">إضافة وإدارة بيانات الموظفين</p>
+                <h2 class="text-2xl text-title">الإعدادات - إدارة الموظفين</h2>
+                <p class="text-white">إضافة وإدارة بيانات الموظفين</p>
             </div>
 
             <div class="card car-col mb-6">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold mb-4">إضافة موظف جديد</h3>
+                    <h3 class="text-lg text-title mb-4">إضافة موظف جديد</h3>
                     <form id="add-employee-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="form-control">
                             <label class="label">
@@ -61,7 +61,7 @@ class Employees {
 
             <div class="card car-col mb-6">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold mb-4">قائمة الموظفين</h3>
+                    <h3 class="text-lg text-title mb-4">قائمة الموظفين</h3>
                     <div class="overflow-x-auto">
                         <table class="table table-zebra">
                             <thead>
@@ -82,10 +82,12 @@ class Employees {
 
             <div class="card car-col">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold text-error">خيارات متقدمة</h3>
-                    <button id="delete-statistics" class="btn btn-error">
+                    <h3 class="text-lg text-title ">خيارات متقدمة</h3>
+
+                    <button id="delete-statistics" class="btn btn-error w-fit">
                         حذف بيانات الإحصائيات
                     </button>
+                    
                 </div>
             </div>
         `;

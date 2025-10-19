@@ -52,13 +52,13 @@ class Violations {
     render() {
         this.container.innerHTML = `
             <div class="mb-6">
-                <h2 class="text-2xl font-bold">إدارة المخالفات</h2>
-                <p class="text-base-content/70">إضافة وإدارة مخالفات الموظفين</p>
+                <h2 class="text-2xl text-title">إدارة المخالفات</h2>
+                <p class="text-white">إضافة وإدارة مخالفات الموظفين</p>
             </div>
 
             <div class="card car-col mb-6">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold mb-4">إضافة مخالفة جديدة</h3>
+                    <h3 class="text-lg text-title mb-4">إضافة مخالفة جديدة</h3>
                     <form id="add-violation-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="form-control">
                             <label class="label">
@@ -104,12 +104,12 @@ class Violations {
             <div class="card car-col">
                 <div class="card-body">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-                        <h3 class="text-lg font-semibold">قائمة المخالفات</h3>
+                        <h3 class="text-lg text-title">قائمة المخالفات</h3>
                         <div class="flex items-center gap-2">
-                            <button id="filter-today-violations" class="btn ${this.filterByToday ? 'btn-error' : 'btn-ghost'}">
+                            <button id="filter-today-violations" class="btn ${this.filterByToday ? 'btn-error' : 'btn-error'}">
                                 فلترة حسب اليوم
                             </button>
-                            <button id="refresh-violations" class="btn btn-ghost">
+                            <button id="refresh-violations" class="btn btn-error">
                                 تحديث
                             </button>
                         </div>

@@ -40,13 +40,13 @@ class Timings {
     render() {
         this.container.innerHTML = `
             <div class="mb-6">
-                <h2 class="text-2xl font-bold">إدارة الزمنيات</h2>
-                <p class="text-base-content/70">إضافة وإدارة زمنيات العمل الإضافي</p>
+                <h2 class="text-2xl text-title">إدارة الزمنيات</h2>
+                <p class="text-white">إضافة وإدارة زمنيات العمل الإضافي</p>
             </div>
 
             <div class="card car-col mb-6">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold mb-4">إضافة زمنية جديدة</h3>
+                    <h3 class="text-lg text-title mb-4">إضافة زمنية جديدة</h3>
                     <form id="add-timing-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="form-control">
                             <label class="label">
@@ -92,7 +92,7 @@ class Timings {
             <div class="card car-col">
                 <div class="card-body">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-                        <h3 class="text-lg font-semibold">قائمة الزمنيات</h3>
+                        <h3 class="text-lg text-title">قائمة الزمنيات</h3>
                         <div class="flex items-center gap-2">
                             <div class="form-control">
                                 <div class="join">
@@ -103,7 +103,7 @@ class Timings {
                                     </button>
                                 </div>
                             </div>
-                            <button id="refresh-timings" class="btn btn-ghost">
+                            <button id="refresh-timings" class="btn btn-primary">
                                 تحديث
                             </button>
                         </div>

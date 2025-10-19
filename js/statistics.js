@@ -94,8 +94,8 @@ class Statistics {
     render() {
         this.container.innerHTML = `
             <div class="mb-6">
-                <h2 class="text-2xl font-bold">الإحصائيات</h2>
-                <p class="text-base-content/70">عرض جميع الإحصائيات والبيانات المجمعة</p>
+                <h2 class="text-2xl text-title">الإحصائيات</h2>
+                <p class="text-white">عرض جميع الإحصائيات والبيانات المجمعة</p>
             </div>
 
             <div class="card car-col mb-6">
@@ -126,7 +126,7 @@ class Statistics {
 
             <div class="card car-col">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold mb-4">البيانات المجمعة</h3>
+                    <h3 class="text-lg text-title mb-4">بيانات الموظفين </h3>
                     <div class="overflow-x-auto">
                         <table class="table">
                             <thead>

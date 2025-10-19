@@ -52,13 +52,13 @@ class Rewards {
     render() {
         this.container.innerHTML = `
             <div class="mb-6">
-                <h2 class="text-2xl font-bold">إدارة المكافآت</h2>
-                <p class="text-base-content/70">إضافة وإدارة مكافآت الموظفين</p>
+                <h2 class="text-2xl text-title">إدارة المكافآت</h2>
+                <p class="text- text-white">إضافة وإدارة مكافآت الموظفين</p>
             </div>
 
             <div class="card car-col mb-6">
                 <div class="card-body">
-                    <h3 class="text-lg font-semibold mb-4">إضافة مكافأة جديدة</h3>
+                    <h3 class="text-lg text-title mb-4">إضافة مكافأة جديدة</h3>
                     <form id="add-reward-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div class="form-control">
                             <label class="label">
@@ -93,12 +93,12 @@ class Rewards {
             <div class="card car-col">
                 <div class="card-body">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-                        <h3 class="text-lg font-semibold">قائمة المكافآت</h3>
+                        <h3 class="text-lg text-title">قائمة المكافآت</h3>
                         <div class="flex items-center gap-2">
-                            <button id="filter-today-rewards" class="btn ${this.filterByToday ? 'btn-success' : 'btn-ghost'}">
+                            <button id="filter-today-rewards" class="btn ${this.filterByToday ? 'btn-success' : 'btn-success'}">
                                 فلترة حسب اليوم
                             </button>
-                            <button id="refresh-rewards" class="btn btn-ghost">
+                            <button id="refresh-rewards" class="btn btn-success">
                                 تحديث
                             </button>
                         </div>
@@ -171,7 +171,7 @@ class Rewards {
             this.renderRewardsList();
             // تحديث زر الفلترة
             const filterButton = document.getElementById('filter-today-rewards');
-            filterButton.className = `btn ${this.filterByToday ? 'btn-success' : 'btn-ghost'}`;
+            filterButton.className = `btn ${this.filterByToday ? 'btn-success' : 'btn-success'}`;
         });
 
         // تحديث القائمة
