@@ -17,7 +17,7 @@ class Sidebar {
              <div class="p-4 overflow-hidden">
     <h2 class="text-xl text-title mb-6 text-center">إدارة الموظفين</h2>
 
-    <ul class="menu menu-lg w-full min-h-[540px] flex flex-col justify-between rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.6)]">
+    <ul class=" min-h-[500px] flex flex-col justify-between rounded-xl">
        
     <li class="mb-2">
     <a href="#" data-section="dashboard"
@@ -113,29 +113,43 @@ class Sidebar {
     }
 
     toggle() {
-        this.isCollapsed = !this.isCollapsed;
+  this.isCollapsed = !this.isCollapsed;
 
-    if (this.isCollapsed) {
-        this.sidebar.classList.add('w-16', 'overflow-hidden');
+  if (this.isCollapsed) {
+    // 🔹 تصغير الشريط وإخفاء النصوص
+    this.sidebar.classList.remove('w-64');
+    this.sidebar.classList.add('w-16', 'overflow-hidden');
 
-        this.sidebar.querySelectorAll('.sidebar-link').forEach(link => {
-            const span = link.querySelector('span');
-            if (span) span.classList.add('hidden');
+    this.sidebar.querySelectorAll('.sidebar-link').forEach(link => {
+      const span = link.querySelector('span');
+      if (span) span.classList.add('hidden');
+      link.classList.add('justify-center');
 
-            // 🔹 أضف الخصائص هنا فقط وقت الإخفاء
-            link.classList.add('overflow-hidden', 'flex', 'items-center', 'justify-center');
-        });
-    } else {
-        this.sidebar.classList.remove('w-16', 'overflow-hidden');
+      // 🔹 تكبير الأيقونات عند الإخفاء
+      const svg = link.querySelector('svg');
+      if (svg) {
+        svg.classList.remove('w-5', 'h-5');
+        svg.classList.add('w-7', 'h-7'); // ✅ الحجم الأكبر
+      }
+    });
+  } else {
+    // 🔹 إعادة الشريط إلى الوضع الطبيعي
+    this.sidebar.classList.remove('w-16', 'overflow-hidden');
+    this.sidebar.classList.add('w-64');
 
-        this.sidebar.querySelectorAll('.sidebar-link').forEach(link => {
-            const span = link.querySelector('span');
-            if (span) span.classList.remove('hidden');
+    this.sidebar.querySelectorAll('.sidebar-link').forEach(link => {
+      const span = link.querySelector('span');
+      if (span) span.classList.remove('hidden');
+      link.classList.remove('justify-center');
 
-            // 🔹 أزل الخصائص عند الإظهار
-            link.classList.remove('overflow-hidden', 'flex', 'items-center', 'justify-center');
-        });
-    }
+      // 🔹 رجع الأيقونات للحجم الطبيعي
+      const svg = link.querySelector('svg');
+      if (svg) {
+        svg.classList.remove('w-7', 'h-7');
+        svg.classList.add('w-5', 'h-5');
+      }
+    });
+  }
 }
 
    navigateTo(section) {
