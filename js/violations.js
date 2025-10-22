@@ -158,7 +158,7 @@ class Violations {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td class="font-medium">${employee?.name || 'غير معروف'}</td>
-                <td>${violation.date ? new Date(violation.date.toDate()).toLocaleDateString('ar-EG') : 'غير محدد'}</td>
+                <td>${violation.date ? new Date(violation.date.toDate()).toLocaleDateString('en-GB') : 'غير محدد'}</td>
                 <td>${violation.reason}</td>
                 <td>
                     <span class="badge ${

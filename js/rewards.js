@@ -146,7 +146,7 @@ class Rewards {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td class="font-medium">${employee?.name || 'غير معروف'}</td>
-                <td>${reward.date ? new Date(reward.date.toDate()).toLocaleDateString('ar-EG') : 'غير محدد'}</td>
+                <td>${reward.date ? new Date(reward.date.toDate()).toLocaleDateString('en-GB') : 'غير محدد'}</td>
                 <td>${reward.reason}</td>
                 <td>
                     <button class="btn btn-ghost btn-xs edit-reward" data-id="${reward.id}">تعديل</button>

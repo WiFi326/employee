@@ -158,3 +158,26 @@
   color: oklch(90% 0.076 70.697);
 }
 
+/* تخصيصات المودال */
+.modal-box {
+  background-color: oklch(98.956% 0.00216 200) !important;
+  color: oklch(20% 0.08 209)!important;
+}
+
+.modal-box .btn {
+  color: oklch(20% 0.08 209) !important;
+}
+
+.modal-box .label-text {
+  color: oklch(90% 0.076 70.697) !important;
+}
+
+.modal-box .input {
+  background-color: oklch(50% 0.08 209) !important;
+  color: oklch(90% 0.076 70.697) !important;
+  border-color: oklch(85% 0.2653 125) !important;
+}
+
+.modal-box .input::placeholder {
+  color: oklch(50% 0.08 209) !important;
+}

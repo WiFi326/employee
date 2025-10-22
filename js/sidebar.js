@@ -93,6 +93,7 @@ class Sidebar {
 </div>
         `;
     }
+    
 
 
     bindEvents() {

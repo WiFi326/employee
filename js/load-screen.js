@@ -12,8 +12,8 @@ class LoadScreen {
         this.createLoadScreen();
         this.setupNavigationListeners();
         
-        // إظهار شاشة التحميل لمدة 3 ثوانٍ عند التحميل الأولي
-        this.show(3000);
+        // إظهار شاشة التحميل لمدة 2 ثوانٍ عند التحميل الأولي
+        this.show(2000);
         
         // تأخير تهيئة التطبيق حتى انتهاء شاشة التحميل
         this.delayAppInit();

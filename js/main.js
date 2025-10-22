@@ -1,3 +1,5 @@
+
+
 // الكائن الرئيسي للتطبيق
 const App = {
     currentSection: null,
@@ -115,6 +117,7 @@ const App = {
     }
 };
 
+
 // جعل الدالة متاحة عالمياً
 window.loadSection = (sectionName) => {
     App.loadSection(sectionName);
@@ -124,3 +127,6 @@ window.loadSection = (sectionName) => {
 document.addEventListener('DOMContentLoaded', () => {
     App.init();
 });
+
+
+window.logout = logout;

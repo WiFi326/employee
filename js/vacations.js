@@ -160,8 +160,8 @@ class Vacations {
             row.innerHTML = `
                 <td class="font-medium">${employee?.name || 'غير معروف'}</td>
                 <td>${vacation.type}</td>
-                <td>${vacation.startDate ? new Date(vacation.startDate.toDate()).toLocaleDateString('ar-EG') : 'غير محدد'}</td>
-                <td>${vacation.endDate ? new Date(vacation.endDate.toDate()).toLocaleDateString('ar-EG') : 'غير محدد'}</td>
+                <td>${vacation.startDate ? new Date(vacation.startDate.toDate()).toLocaleDateString('en-US') : 'غير محدد'}</td>
+                <td>${vacation.endDate ? new Date(vacation.endDate.toDate()).toLocaleDateString('en-US') : 'غير محدد'}</td>
                 <td>
                     <button class="btn btn-ghost btn-xs edit-vacation" data-id="${vacation.id}">تعديل</button>
                     <button class="btn btn-ghost btn-xs text-error delete-vacation" data-id="${vacation.id}">حذف</button>

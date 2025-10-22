@@ -128,7 +128,7 @@ class Statistics {
                 <div class="card-body">
                     <h3 class="text-lg text-title mb-4">بيانات الموظفين </h3>
                     <div class="overflow-x-auto">
-                        <table class="table">
+                        <table class="table border border-gray-400 rounded-xl">
                             <thead>
                                 <tr>
                                     <th>اسم الموظف</th>
@@ -197,7 +197,7 @@ class Statistics {
                         ${stat.type}
                     </span>
                 </td>
-                <td>${stat.date ? new Date(stat.date.toDate()).toLocaleDateString('ar-EG') : 'غير محدد'}</td>
+                <td>${stat.date ? new Date(stat.date.toDate()).toLocaleDateString('en-GB') : 'غير محدد'}</td>
                 <td>${stat.details}</td>
                 <td>
                     <button class="btn btn-ghost btn-xs edit-statistic" 
@@ -318,7 +318,7 @@ class Statistics {
 
             exportData[employeeName].push({
                 الحالة: stat.type,
-                التاريخ: new Date(stat.date?.toDate()).toLocaleDateString('ar-EG'),
+                التاريخ: new Date(stat.date?.toDate()).toLocaleDateString('en-GB'),
                 التفاصيل: stat.details,
                 التقييم: this.getRating(stat),
                 الملاحظات: ''

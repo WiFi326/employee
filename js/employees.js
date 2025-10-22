@@ -116,7 +116,7 @@ class Employees {
             row.innerHTML = `
                 <td class="font-medium">${employee.name}</td>
                 <td>${employee.type}</td>
-                <td>${employee.createdAt ? new Date(employee.createdAt.toDate()).toLocaleDateString('ar-EG') : 'غير محدد'}</td>
+                <td>${employee.createdAt ? new Date(employee.createdAt.toDate()).toLocaleDateString('en-US') : 'غير محدد'}</td>
                 <td>
                     <button class="btn btn-ghost btn-xs edit-employee" data-id="${employee.id}">تعديل</button>
                     <button class="btn btn-ghost btn-xs text-error delete-employee" data-id="${employee.id}">حذف</button>

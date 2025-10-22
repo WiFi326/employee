@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="abyss">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - نظام إدارة الموظفين</title>
+    <link href="./styles/tailwind.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <style>
+        .login-gradient-bg {
+            background: linear-gradient(135deg, oklch(15% 0.08 209) 0%, oklch(20% 0.08 209) 50%, oklch(25% 0.08 209) 100%);
+        }
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .input-glow:focus {
+            box-shadow: 0 0 0 3px oklch(92% 0.2653 125 / 0.3);
+        }
+    </style>
+</head>
+<body class="login-gradient-bg min-h-screen">
+    <!-- شاشة التحميل -->
+    <div id="login-load-screen" class="fixed inset-0 bg-oklch z-50 flex items-center justify-center transition-opacity duration-500">
+        <div class="text-center">
+            <div class="mb-8">
+                <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-r from-primary to-success flex items-center justify-center shadow-lg">
+                    <svg class="w-12 h-12 text-base-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">نظام إدارة الموظفين</h2>
+            <p class="text-white">جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- واجهة تسجيل الدخول -->
+    <div id="login-container" class="min-h-screen flex items-center justify-center p-4 hidden">
+        <div class="w-full max-w-md">
+            <!-- البطاقة الرئيسية -->
+            <div class="card bg-oklch border border-black shadow-[0_0_35px_rgba(0,0,0,0.9)] rounded-2xl overflow-hidden floating-card">
+                <div class="card-body p-8">
+                    <!-- الرأس -->
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-primary to-success flex items-center justify-center shadow-lg">
+                            <svg class="w-10 h-10 text-base-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h1 class="text-2xl font-bold text-title mb-2">نظام إدارة الموظفين</h1>
+                        <p class="text-gray-400">سجل الدخول إلى حسابك</p>
+                    </div>
+
+                    <!-- نموذج تسجيل الدخول -->
+                    <form id="login-form" class="space-y-6">
+                        <!-- حقل البريد الإلكتروني -->
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text text-white">البريد الإلكتروني</span>
+                            </label>
+                            <div class="relative">
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email"
+                                    required 
+                                    class="input input-bordered w-full pr-12 bg-oklch border-gray-600 text-white placeholder-gray-500 focus:border-primary input-glow transition-all duration-300"
+                                    placeholder="ادخل بريدك الإلكتروني"
+                                    autocomplete="email"
+                                >
+                                <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- حقل كلمة المرور -->
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text text-white">كلمة المرور</span>
+                            </label>
+                            <div class="relative">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password"
+                                    required 
+                                    class="input input-bordered w-full pr-12 bg-oklch border-gray-600 text-white placeholder-gray-500 focus:border-primary input-glow transition-all duration-300"
+                                    placeholder="ادخل كلمة المرور"
+                                    autocomplete="current-password"
+                                >
+                                <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- تذكرني ونسيت كلمة المرور -->
+                        <div class="flex items-center justify-between">
+                            <label class="cursor-pointer label justify-start space-x-3">
+                                <input type="checkbox" id="remember-me" class="checkbox checkbox-primary">
+                                <span class="label-text text-gray-400">تذكرني</span>
+                            </label>
+                            <a href="#" class="text-sm text-primary hover:text-primary/80 transition-colors" onclick="showForgotPassword()">نسيت كلمة المرور؟</a>
+                        </div>
+
+                        <!-- زر تسجيل الدخول -->
+                        <button 
+                            type="submit" 
+                            id="login-btn"
+                            class="btn btn-primary w-full py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+                        >
+                            <span id="login-text">تسجيل الدخول</span>
+                            <div id="login-spinner" class="loading loading-spinner loading-sm hidden"></div>
+                        </button>
+                    </form>
+
+                    <!-- رسائل الخطأ -->
+                    <div id="login-error" class="mt-4 p-3 bg-error/20 border border-error/30 rounded-lg hidden transition-all duration-300">
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <svg class="w-5 h-5 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <p class="text-error text-sm" id="error-message"></p>
+                        </div>
+                    </div>
+
+                    <!-- معلومات إضافية -->
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <p class="text-center text-gray-400 text-sm">
+                            للدعم الفني، يرجى التواصل مع 
+                            <a href="mailto:support@company.com" class="text-primary hover:text-primary/80 transition-colors">دائرة تكنولوجيا المعلومات</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- حقوق النشر -->
+            <div class="text-center mt-6">
+                <p class="text-gray-500 text-sm">© 2024 نظام إدارة الموظفين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال نسيت كلمة المرور -->
+    <div id="forgot-password-modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box bg-oklch border border-black">
+            <h3 class="font-bold text-lg text-white">استعادة كلمة المرور</h3>
+            <div class="py-4">
+                <p class="text-gray-400 mb-4">ادخل بريدك الإلكتروني وسنرسل لك رابط لاستعادة كلمة المرور:</p>
+                <input type="email" id="reset-email" placeholder="البريد الإلكتروني" class="input input-bordered w-full bg-oklch border-gray-600 text-white">
+            </div>
+            <div class="modal-action">
+                <button class="btn btn-ghost" onclick="closeForgotPassword()">إلغاء</button>
+                <button class="btn btn-primary" onclick="sendPasswordReset()">إرسال الرابط</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الإشعارات -->
+    <div id="login-notifications" class="fixed top-4 right-4 z-50"></div>
+
+    <script>
+        // تهيئة Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCF7LNSUwCGnraH0i93QEhcANXFrSvYDXc",
+            authDomain: "employee-cff05.firebaseapp.com",
+            projectId: "employee-cff05",
+            storageBucket: "employee-cff05.firebasestorage.app",
+            messagingSenderId: "44581865925",
+            appId: "1:44581865925:web:0f842797499f85c249a3ac",
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        class LoginSystem {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.checkAuthState();
+                this.hideLoadScreen();
+            }
+
+            setupEventListeners() {
+                const loginForm = document.getElementById('login-form');
+                const emailInput = document.getElementById('email');
+                const passwordInput = document.getElementById('password');
+
+                if (loginForm) {
+                    loginForm.addEventListener('submit', (e) => this.handleLogin(e));
+                }
+
+                // إضافة تأثيرات للتركيز على الحقول
+                [emailInput, passwordInput].forEach(input => {
+                    if (input) {
+                        input.addEventListener('focus', () => {
+                            input.parentElement.classList.add('ring-2', 'ring-primary/20');
+                        });
+                        input.addEventListener('blur', () => {
+                            input.parentElement.classList.remove('ring-2', 'ring-primary/20');
+                        });
+                    }
+                });
+            }
+
+            checkAuthState() {
+                auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        this.redirectToDashboard();
+                    }
+                });
+            }
+
+            async handleLogin(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('remember-me').checked;
+
+                this.showLoading(true);
+                this.hideError();
+
+                try {
+                    // تعيين استمرارية الجلسة
+                    const persistence = rememberMe ? 
+                        firebase.auth.Auth.Persistence.LOCAL : 
+                        firebase.auth.Auth.Persistence.SESSION;
+
+                    await auth.setPersistence(persistence);
+                    
+                    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                    const user = userCredential.user;
+
+                    // التحقق من صلاحية المستخدم في Firestore
+                    const userDoc = await db.collection('users').doc(user.uid).get();
+                    
+                    if (userDoc.exists) {
+                        this.showSuccess('تم تسجيل الدخول بنجاح!');
+                        setTimeout(() => this.redirectToDashboard(), 1000);
+                    } else {
+                        await auth.signOut();
+                        this.showError('ليس لديك صلاحية للوصول إلى النظام');
+                    }
+
+                } catch (error) {
+                    this.handleLoginError(error);
+                } finally {
+                    this.showLoading(false);
+                }
+            }
+
+            handleLoginError(error) {
+                let errorMessage = 'حدث خطأ أثناء تسجيل الدخول';
+                
+                switch (error.code) {
+                    case 'auth/invalid-email':
+                        errorMessage = 'البريد الإلكتروني غير صحيح';
+                        break;
+                    case 'auth/user-disabled':
+                        errorMessage = 'هذا الحساب معطل';
+                        break;
+                    case 'auth/user-not-found':
+                        errorMessage = 'لا يوجد حساب مرتبط بهذا البريد الإلكتروني';
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = 'كلمة المرور غير صحيحة';
+                        break;
+                    case 'auth/too-many-requests':
+                        errorMessage = 'تم محاولة الدخول عدة مرات، يرجى المحاولة لاحقاً';
+                        break;
+                    default:
+                        errorMessage = error.message;
+                }
+                
+                this.showError(errorMessage);
+            }
+
+            showLoading(show) {
+                const loginBtn = document.getElementById('login-btn');
+                const loginText = document.getElementById('login-text');
+                const loginSpinner = document.getElementById('login-spinner');
+
+                if (show) {
+                    loginText.classList.add('hidden');
+                    loginSpinner.classList.remove('hidden');
+                    loginBtn.disabled = true;
+                } else {
+                    loginText.classList.remove('hidden');
+                    loginSpinner.classList.add('hidden');
+                    loginBtn.disabled = false;
+                }
+            }
+
+            showError(message) {
+                const errorDiv = document.getElementById('login-error');
+                const errorMessage = document.getElementById('error-message');
+                
+                errorMessage.textContent = message;
+                errorDiv.classList.remove('hidden');
+                
+                // إخفاء الرسالة تلقائياً بعد 5 ثوانٍ
+                setTimeout(() => {
+                    this.hideError();
+                }, 5000);
+            }
+
+            hideError() {
+                const errorDiv = document.getElementById('login-error');
+                errorDiv.classList.add('hidden');
+            }
+
+            showSuccess(message) {
+                this.showNotification(message, 'success');
+            }
+
+            showNotification(message, type = 'info') {
+                const notifications = document.getElementById('login-notifications');
+                const notificationId = 'notification-' + Date.now();
+                
+                const bgColor = type === 'success' ? 'bg-success' : 'bg-primary';
+                const textColor = type === 'success' ? 'text-success-content' : 'text-primary-content';
+                
+                const notificationHTML = `
+                    <div id="${notificationId}" class="alert ${bgColor} ${textColor} shadow-lg mb-2 transform transition-all duration-300 translate-x-0 opacity-100">
+                        <div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>${message}</span>
+                        </div>
+                    </div>
+                `;
+                
+                notifications.insertAdjacentHTML('beforeend', notificationHTML);
+                
+                // إخفاء الإشعار تلقائياً بعد 3 ثوانٍ
+                setTimeout(() => {
+                    const notification = document.getElementById(notificationId);
+                    if (notification) {
+                        notification.style.transform = 'translateX(100%)';
+                        notification.style.opacity = '0';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 3000);
+            }
+
+            hideLoadScreen() {
+                setTimeout(() => {
+                    const loadScreen = document.getElementById('login-load-screen');
+                    const loginContainer = document.getElementById('login-container');
+                    
+                    if (loadScreen) {
+                        loadScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadScreen.remove();
+                            loginContainer.classList.remove('hidden');
+                        }, 500);
+                    }
+                }, 2000);
+            }
+
+            redirectToDashboard() {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // دوال مساعدة عالمية
+        function showForgotPassword() {
+            document.getElementById('forgot-password-modal').classList.add('modal-open');
+        }
+
+        function closeForgotPassword() {
+            document.getElementById('forgot-password-modal').classList.remove('modal-open');
+        }
+
+        async function sendPasswordReset() {
+            const email = document.getElementById('reset-email').value;
+            
+            if (!email) {
+                alert('يرجى إدخال البريد الإلكتروني');
+                return;
+            }
+
+            try {
+                await auth.sendPasswordResetEmail(email);
+                alert('تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني');
+                closeForgotPassword();
+            } catch (error) {
+                alert('حدث خطأ: ' + error.message);
+            }
+        }
+
+        // تهيئة نظام التسجيل عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            new LoginSystem();
+        });
+
+        // إضافة تأثيرات إضافية للوحة المفاتيح
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && document.activeElement.type !== 'textarea') {
+                const loginForm = document.getElementById('login-form');
+                if (loginForm) {
+                    loginForm.dispatchEvent(new Event('submit'));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
