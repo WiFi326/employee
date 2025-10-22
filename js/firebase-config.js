@@ -1,12 +1,12 @@
 // تهيئة Firebase
 const firebaseConfig = {
     // ضع هنا معلومات التهيئة الخاصة بمشروع Firebase الخاص بك
-    apiKey: "your-api-key",
-    authDomain: "your-project.firebaseapp.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "your-app-id"
+    apiKey: "AIzaSyCF7LNSUwCGnraH0i93QEhcANXFrSvYDXc",
+  authDomain: "employee-cff05.firebaseapp.com",
+  projectId: "employee-cff05",
+  storageBucket: "employee-cff05.firebasestorage.app",
+  messagingSenderId: "44581865925",
+  appId: "1:44581865925:web:0f842797499f85c249a3ac",
 };
 
 // تهيئة Firebase
