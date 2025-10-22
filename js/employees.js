@@ -63,7 +63,7 @@ class Employees {
                 <div class="card-body">
                     <h3 class="text-lg text-title mb-4">قائمة الموظفين</h3>
                     <div class="overflow-x-auto">
-                        <table class="table table-zebra">
+                        <table class="table border border-gray-400 rounded-xl shadow-sm">
                             <thead>
                                 <tr>
                                     <th>الاسم</th>

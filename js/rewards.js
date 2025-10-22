@@ -104,7 +104,7 @@ class Rewards {
                         </div>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="table table-zebra">
+                        <table class="table border border-gray-400 rounded-xl shadow-sm"">
                             <thead>
                                 <tr>
                                     <th>اسم الموظف</th>
